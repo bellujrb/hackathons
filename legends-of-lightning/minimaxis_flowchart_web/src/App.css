@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--neutral-900, #1A1A1A);
+
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.containerapp{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.input {
+  margin-top: 10px;
+  height: 49px;
+  width: 80%;
+  border-radius: 10px;
+  border: 1px solid #8859FE;
+  color: white;
+  background: var(--500, #333);
+}
+
+.button {
+  margin-top: 10px;
+  width: 249px;
+  height: 40px;
+  align-items: center;
+  border-radius: 6px;
+  background: #8859FE;
+  color: white;
+}
+
+.margin{
+  margin-top: 10px;
+}
+
+.loading{
+  padding: 10px;
+  color: white;
+  font-size: 16px;
+
+}

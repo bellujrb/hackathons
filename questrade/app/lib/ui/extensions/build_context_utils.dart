@@ -1,0 +1,9 @@
+import 'package:flutter/material.dart';
+
+import '../styles/text_style.dart';
+
+extension BuildContextUtils on BuildContext {
+  double get mediaHeight => MediaQuery.of(this).size.height;
+  double get mediaWidth => MediaQuery.of(this).size.width;
+  AppTextStyles get styleModifier => appTextStyles;
+}

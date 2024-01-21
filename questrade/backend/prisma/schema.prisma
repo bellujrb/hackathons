@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Loan {
+  id       Int    @id @default(autoincrement())
+  userId   String @unique @default("")
+  email    String @unique @default("")
+  adress   String @default("")
+  current  Int    @default(0)
+  phone    String @default("")
+  loan     Int    @default(0)
+  score    Int    @default(0)
+  password String @default("")
+  name     String @default("")
+}
+
+model Login {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique @default("")
+  isLogged Boolean @default(false)
+}
+
+model Make {
+  id    Int     @id @default(autoincrement())
+  email String  @unique @default("")
+  loan  Int     @default(0)
+  isOld Boolean
+}

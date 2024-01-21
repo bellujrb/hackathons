@@ -1,0 +1,44 @@
+# Aplicação para Conversão de Dados CSV para Formato CNAB 750
+
+Esta aplicação é responsável por converter dados fornecidos em formato CSV para o formato CNAB 750. O formato CNAB 750 é amplamente utilizado em transações financeiras no Brasil e segue um layout padronizado para facilitar a integração com sistemas bancários.
+
+### Como utilizar a aplicação
+
+Certifique-se de ter instalado o Node.js em sua máquina.
+
+Clone este repositório em seu ambiente local.
+
+```
+git clone https://github.com/seu-usuario/nome-do-repositorio.git
+```
+
+Navegue até o diretório do projeto.
+
+```
+cd nome-do-repositorio
+```
+
+Instale as dependências do projeto.
+
+```
+npm install
+```
+
+Prepare o arquivo CSV contendo os dados a serem convertidos. Certifique-se de que o arquivo siga o formato adequado, com as colunas correspondentes aos campos do CNAB 750.
+
+Execute a aplicação fornecendo o caminho para o arquivo CSV.
+
+```
+npm run build
+npm run start:prod
+localhost:3000/api
+```
+
+O processo de conversão será iniciado e o resultado será salvo em um novo arquivo com o formato CNAB 750.
+
+Exemplo de Arquivo CSV
+
+```
+cpf,nome,tiporegistro,tipopessoa,chave,cobranca,ocorrencia,sequencial,nomedestinado,valor
+12345,Empresa,cpf,mei,Chave,1231,12,6543,John,100
+```
