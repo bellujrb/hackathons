@@ -1,0 +1,279 @@
+definitions:
+  external.Company:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      currency:
+        type: string
+      json_extended_attributes:
+        additionalProperties:
+          type: string
+        type: object
+      name:
+        type: string
+      phone:
+        type: string
+      place_id:
+        type: string
+      state:
+        type: string
+      unit_system:
+        type: string
+      zip_code:
+        type: string
+    type: object
+  external.FieldModel:
+    properties:
+      declared_area:
+        type: number
+      event_date:
+        type: string
+      geometry:
+        $ref: '#/definitions/external.GeoJSON'
+      json_extended_attributes:
+        additionalProperties:
+          type: string
+        type: object
+      name:
+        type: string
+      parent_region_id:
+        type: string
+      property_id:
+        type: string
+    type: object
+  external.GeoJSON:
+    properties:
+      coordinates:
+        items:
+          items:
+            items:
+              type: number
+            type: array
+          type: array
+        type: array
+      type:
+        type: string
+    type: object
+  external.Location:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      json_extended_attributes:
+        additionalProperties:
+          type: string
+        type: object
+      name:
+        type: string
+      org_id:
+        type: string
+      place_id:
+        type: string
+      reference_point:
+        $ref: '#/definitions/external.ReferencePoint'
+      state:
+        type: string
+      time_zone:
+        type: string
+      zip_code:
+        type: string
+    type: object
+  external.ReferencePoint:
+    properties:
+      coordinates:
+        items:
+          type: number
+        type: array
+      type:
+        type: string
+    type: object
+  inter.ClassifyField:
+    properties:
+      area:
+        type: integer
+    type: object
+  inter.FieldInput:
+    properties:
+      area:
+        type: integer
+      loc:
+        type: string
+      name:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /all-fields:
+    get:
+      consumes:
+      - application/json
+      description: Busca todos os campos do banco de dados
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Campos encontrados com sucesso
+          schema:
+            items:
+              $ref: '#/definitions/inter.FieldInput'
+            type: array
+      summary: Busca todos os campos
+      tags:
+      - Fields
+  /classify:
+    get:
+      consumes:
+      - application/json
+      description: Classifica um campo com base na área fornecida
+      parameters:
+      - description: Área a ser classificada
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/inter.ClassifyField'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Classificação do campo
+          schema:
+            type: string
+      summary: Classifica um campo com base na área
+      tags:
+      - Fields
+  /external-companies:
+    post:
+      consumes:
+      - application/json
+      description: Cria uma nova empresa no banco de dados
+      parameters:
+      - description: Dados da empresa a ser criada
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/external.Company'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Empresa criada com sucesso
+          schema:
+            type: string
+      summary: Cria uma nova empresa
+      tags:
+      - Companies
+  /external-fields:
+    post:
+      consumes:
+      - application/json
+      description: Cria um novo campo no banco de dados
+      parameters:
+      - description: Dados do campo a ser criado
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/external.FieldModel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Campo criado com sucesso
+          schema:
+            type: string
+      summary: Cria um novo campo
+      tags:
+      - Fields
+  /external-locations:
+    post:
+      consumes:
+      - application/json
+      description: Cria uma nova localização no banco de dados
+      parameters:
+      - description: Dados da localização a ser criada
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/external.Location'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Localização criada com sucesso
+          schema:
+            type: string
+      summary: Cria uma nova localização
+      tags:
+      - Locations
+  /fields:
+    delete:
+      consumes:
+      - application/json
+      description: Deleta um campo do banco de dados pelo ID
+      parameters:
+      - description: ID do campo a ser editado
+        in: header
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: Campo deletado com sucesso
+      summary: Deleta um campo pelo ID
+      tags:
+      - Fields
+    get:
+      consumes:
+      - application/json
+      description: Busca um campo no banco de dados pelo ID
+      parameters:
+      - description: ID do campo a ser buscado
+        in: header
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Campo encontrado com sucesso
+          schema:
+            $ref: '#/definitions/inter.FieldInput'
+      summary: Busca um campo pelo ID
+      tags:
+      - Fields
+    post:
+      consumes:
+      - application/json
+      description: Cria um novo campo no banco de dados
+      parameters:
+      - description: Dados do campo a ser criado
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/inter.FieldInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Campo criado com sucesso
+          schema:
+            $ref: '#/definitions/inter.FieldInput'
+      summary: Cria um novo campo
+      tags:
+      - Fields
+swagger: "2.0"
