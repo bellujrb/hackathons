@@ -1,0 +1,1460 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a server for app.",
+        "title": "Fidz",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "52.15.128.117:8080",
+    "paths": {
+        "/api/all-company": {
+            "get": {
+                "description": "Get all company register in db",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mkt"
+                ],
+                "summary": "Get all company",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "One item for a company",
+                        "schema": {
+                            "$ref": "#/definitions/inter.MktItemOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to make deploy",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/all-contract": {
+            "get": {
+                "description": "Get All contracts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Get All contracts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New User Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.UserOutputController"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to store data in database",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/all-items": {
+            "get": {
+                "description": "Get all items for one company",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mkt"
+                ],
+                "summary": "Get All Items",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Company name",
+                        "name": "Company",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All items for one company",
+                        "schema": {
+                            "$ref": "#/definitions/inter.MktItemsOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to make deploy",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/all-token": {
+            "get": {
+                "description": "Create a new user in db",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Token"
+                ],
+                "summary": "Get all Tokens",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "contract id",
+                        "name": "ContractId",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New User Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.AllTokensOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to store data in database",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contract": {
+            "get": {
+                "description": "Pull a contract from blockchain",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Pull a contract",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "contract Id",
+                        "name": "ContractId",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New User Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.UserOutputController"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to store data in database",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/converter-token": {
+            "get": {
+                "description": "Converter tokens for money or another tokens",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Token"
+                ],
+                "summary": "Converter tokens",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Your tokens",
+                        "name": "Token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New User Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.AllTokensOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to store data in database",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/create-company": {
+            "post": {
+                "description": "Create a new Company",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mkt"
+                ],
+                "summary": "Create Company",
+                "parameters": [
+                    {
+                        "description": "Data for make a new Company",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/inter.CreateCompanyController"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Company Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.UserOutputController"
+                        }
+                    },
+                    "500": {
+                        "description": "Error for make a new Company",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/create-contract": {
+            "post": {
+                "description": "Create a new contract",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Create Contract",
+                "parameters": [
+                    {
+                        "description": "Data for make a new contract",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/inter.ContractController"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Contract Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.UserOutputController"
+                        }
+                    },
+                    "500": {
+                        "description": "Error for make a new contract",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/create-token": {
+            "post": {
+                "description": "Create a new user in db",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Token"
+                ],
+                "summary": "Make Tokens",
+                "parameters": [
+                    {
+                        "description": "Data for make a new token",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/inter.TokenCreateInput"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Token Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.TokenCreateOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to created a new token",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/deploy-contract": {
+            "post": {
+                "description": "Deploy new contract in the blockchain",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contract"
+                ],
+                "summary": "Deploy new contract",
+                "parameters": [
+                    {
+                        "description": "ContractId for deploy a new contract",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/inter.DeployController"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deploy its a sucessfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.ContractDeploymentResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to make deploy",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/gain-tokens": {
+            "post": {
+                "description": "This would be implemented as the application remains open. RoadMap is mocked, and this randomly generates a number, and gives an FDZ that can be 0.000001 or 1",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Token"
+                ],
+                "summary": "Gain token",
+                "parameters": [
+                    {
+                        "description": "Data for gain tokens :)",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/inter.Gimmetoken"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Your tokens is be send for your account",
+                        "schema": {
+                            "$ref": "#/definitions/inter.TransactionRes"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to store data in database",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/get-token": {
+            "get": {
+                "description": "Create a new user in db",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Token"
+                ],
+                "summary": "Get specify token",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "E-mail from user",
+                        "name": "ContractId",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Its a uri content in tokens",
+                        "name": "UriToken",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New User Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.UserOutputController"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to store data in database",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/loggout": {
+            "put": {
+                "description": "pull user and wallet for db",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Loggout User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "E-mail from user",
+                        "name": "Email",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New User Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.UserOutputController"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to store data in database",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/make-trade": {
+            "post": {
+                "description": "Create a transfer from a user to a new token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Token"
+                ],
+                "summary": "Make a Trade",
+                "parameters": [
+                    {
+                        "description": "Data for make a new user",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/inter.Trade"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New User Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.UserOutputController"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to store data in database",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/make-transfer": {
+            "post": {
+                "description": "Create a transfer from a user to a user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Token"
+                ],
+                "summary": "Make a transfer",
+                "parameters": [
+                    {
+                        "description": "Data for make a new user",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/inter.Transaction"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transfer is by sucessfull",
+                        "schema": {
+                            "$ref": "#/definitions/inter.TransferOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to store data in database",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/one-company": {
+            "get": {
+                "description": "Deploy new contract in the blockchain",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mkt"
+                ],
+                "summary": "Get one company",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Company name",
+                        "name": "Company",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "One item for a company",
+                        "schema": {
+                            "$ref": "#/definitions/inter.MktItemOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to make deploy",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/one-item": {
+            "get": {
+                "description": "Deploy new contract in the blockchain",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mkt"
+                ],
+                "summary": "Get one item",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Company name",
+                        "name": "Company",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Item name",
+                        "name": "ItemName",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "One item for a company",
+                        "schema": {
+                            "$ref": "#/definitions/inter.MktItemOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to make deploy",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "get": {
+                "description": "pull user and wallet for db",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get user",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "E-mail from user",
+                        "name": "Email",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New User Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.UserOutputController"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to store data in database",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/create-item": {
+            "post": {
+                "description": "Create a new item in db",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mkt"
+                ],
+                "summary": "Create item",
+                "parameters": [
+                    {
+                        "description": "Data for make a new item",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/inter.CreateItemController"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New item Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.MktItemsOutput"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to store data in database",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/create-user": {
+            "post": {
+                "description": "Create a new user in db",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create user",
+                "parameters": [
+                    {
+                        "description": "Data for make a new user",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/inter.UserController"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Token de autenticação (Colocar o token deixando o Bearer)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New User Created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/inter.UserOutputController"
+                        }
+                    },
+                    "500": {
+                        "description": "Unable to store data in database",
+                        "schema": {
+                            "$ref": "#/definitions/erros.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "put": {
+                "description": "Login user and give a acess token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "E-mail from user",
+                        "name": "Email",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token make:",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "User not found in db",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/token": {
+            "get": {
+                "description": "Creat a token for external apis",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Creat a token for apis",
+                "responses": {
+                    "200": {
+                        "description": "token make:",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "base.BaseReq": {
+            "type": "object",
+            "properties": {
+                "LogData": {
+                    "$ref": "#/definitions/base.LogData"
+                },
+                "ResponseData": {
+                    "$ref": "#/definitions/base.ResponseData"
+                }
+            }
+        },
+        "base.LogData": {
+            "type": "object",
+            "properties": {
+                "ExecutionTime": {
+                    "type": "string"
+                },
+                "HttpStatusCode": {
+                    "type": "integer"
+                },
+                "IP": {
+                    "type": "string"
+                },
+                "Route": {
+                    "type": "string"
+                }
+            }
+        },
+        "base.ResponseData": {
+            "type": "object",
+            "properties": {
+                "Response": {}
+            }
+        },
+        "erros.InternalServerError": {
+            "type": "object",
+            "properties": {
+                "BaseReq": {
+                    "$ref": "#/definitions/base.BaseReq"
+                },
+                "InternalServerError": {
+                    "$ref": "#/definitions/erros.Message"
+                },
+                "Response": {}
+            }
+        },
+        "erros.Message": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "inter.AllTokensOutput": {
+            "type": "object",
+            "properties": {
+                "tokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/inter.TokenCreateOutput"
+                    }
+                }
+            }
+        },
+        "inter.ContractController": {
+            "type": "object",
+            "properties": {
+                "contractType": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "symbol": {
+                    "type": "string"
+                }
+            }
+        },
+        "inter.ContractDeploymentResponse": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "blockchainName": {
+                    "type": "string"
+                },
+                "blockscanUrl": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "deployedAt": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "inter.CreateCompanyController": {
+            "type": "object",
+            "properties": {
+                "URI": {
+                    "type": "integer"
+                },
+                "cnpj": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "urlImage": {
+                    "type": "string"
+                }
+            }
+        },
+        "inter.CreateItemController": {
+            "type": "object",
+            "properties": {
+                "URI": {
+                    "type": "integer"
+                },
+                "company": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "urlImage": {
+                    "type": "string"
+                }
+            }
+        },
+        "inter.DeployController": {
+            "type": "object",
+            "properties": {
+                "contractId": {
+                    "type": "string"
+                }
+            }
+        },
+        "inter.Gimmetoken": {
+            "type": "object",
+            "properties": {
+                "contractID": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "uriNumber": {
+                    "type": "integer"
+                },
+                "walletID": {
+                    "type": "string"
+                }
+            }
+        },
+        "inter.MktItemOutput": {
+            "type": "object",
+            "properties": {
+                "company": {
+                    "type": "string"
+                },
+                "create_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "update_at": {
+                    "type": "string"
+                },
+                "uri": {
+                    "type": "integer"
+                },
+                "urlImage": {
+                    "type": "string"
+                }
+            }
+        },
+        "inter.MktItemsOutput": {
+            "type": "object"
+        },
+        "inter.TokenCreateInput": {
+            "type": "object",
+            "properties": {
+                "contractId": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "maxSupply": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "traits": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "inter.TokenCreateOutput": {
+            "type": "object",
+            "properties": {
+                "contractId": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "currentSupply": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "maxSupply": {
+                    "type": "integer"
+                },
+                "metadataUrl": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "traits": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "uriNumber": {
+                    "type": "integer"
+                }
+            }
+        },
+        "inter.Trade": {
+            "type": "object",
+            "properties": {
+                "transaction1": {
+                    "$ref": "#/definitions/inter.Transaction"
+                },
+                "transaction2": {
+                    "$ref": "#/definitions/inter.Transaction"
+                }
+            }
+        },
+        "inter.Transaction": {
+            "type": "object",
+            "properties": {
+                "contractId": {
+                    "type": "string"
+                },
+                "from": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "to": {
+                    "type": "string"
+                }
+            }
+        },
+        "inter.TransactionRes": {
+            "type": "object",
+            "properties": {
+                "completedAt": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "request": {
+                    "type": "object",
+                    "properties": {
+                        "contractId": {
+                            "type": "string"
+                        },
+                        "quantity": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "result": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "status": {
+                    "type": "string"
+                },
+                "transactionHash": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "walletId": {
+                    "type": "string"
+                }
+            }
+        },
+        "inter.TransferOutput": {
+            "type": "object",
+            "properties": {
+                "completedAt": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "request": {
+                    "type": "object",
+                    "properties": {
+                        "contractId": {
+                            "type": "string"
+                        },
+                        "from": {
+                            "type": "string"
+                        },
+                        "quantity": {
+                            "type": "integer"
+                        },
+                        "to": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "result": {
+                    "type": "object"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "transactionHash": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "walletId": {
+                    "type": "string"
+                }
+            }
+        },
+        "inter.UserController": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "inter.UserOutputController": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BasicAuth": {
+            "type": "basic"
+        }
+    },
+    "externalDocs": {
+        "description": "OpenAPI",
+        "url": "https://swagger.io/resources/open-api/"
+    }
+}
