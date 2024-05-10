@@ -158,8 +158,6 @@ hackathon-lumx
 - Go
 - Gin Tonic
 - Gin Swagger and Swaggo
-- HTTP
-- Logger
 
 ### Architecture (Backend)
 - MVC
