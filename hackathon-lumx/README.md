@@ -16,13 +16,6 @@
 
 ---
 
-> _Swagger API Documentation: http://52.15.128.117:8080/swagger/index.html#
-
-> _Prototyping: https://www.figma.com/file/W6si6yj3VRbXmgn0zFBGjs/Lumx-Hack?type=design&node-id=61%3A757&mode=design&t=AobbUP9Ift2AXyB9-144
-
-> _Video Demo Application and API: https://www.youtube.com/watch?v=V3FKSf-pxag
----
-
 ## 🌐 Introduction
 
 Our platform aims to revolutionize the concept of loyalty tokens by centralizing their management and providing transparent exchange mechanisms. Users can effortlessly convert their loyalty tokens into other forms, accompanied by clear explanations for each transaction, thereby fostering trust and transparency among merchants. Leveraging blockchain technology, we mitigate the risks associated with fraud and manipulation, ensuring the integrity of every transaction.
