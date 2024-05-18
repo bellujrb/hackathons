@@ -1,9 +1,5 @@
 ## Future Innovathon Program
 
-<div align="center">
-    <img src="https://cdn.discordapp.com/attachments/1235359156743962746/1236793323981766748/image.png?ex=66394d0a&is=6637fb8a&hm=bd689fa974be629f66201fdd3f4053c428fe51e79c8dad7e5bbb219591a0d2ae&" alt="Fidz Logo">
-</div>
-
 ---
 
 # Fidz: The future Education!  
